@@ -119,7 +119,7 @@ fn handle_id(text: &mut CowStr, options: &serde_json::Value) -> String {
 
     title = if parse_bool(&options["ghCompatibleHeaderId"]) {
         let new_title = title.replace(" ", "-");
-        regex_replace(new_title.as_str(), "[&+$,/:;=?@\"#{}|^¨~[]`\\*)(%.!'<>]", "", "g").to_lowercase()
+        regex_replace(new_title.as_str(), "[&+$,/:;=?@\"#{}|^¨~[\\]`\\*)(%.!'<>]", "", "g").to_lowercase()
     } else if parse_bool(&options["rawHeaderId"]) {
         regex_replace(title.as_str(), "[\"\' ]", "-", "g").to_lowercase()
     } else {
